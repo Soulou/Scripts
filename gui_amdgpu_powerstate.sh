@@ -13,6 +13,7 @@ if [ $UID -ne 0 ] ; then
 		suer="/usr/bin/sudo"
 	else
 		echo "You have to be root !"
+        exit -1
 	fi
 	$suer "$0"
 	exit 0
