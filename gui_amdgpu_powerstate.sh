@@ -3,6 +3,7 @@
 suer=""
 
 if [ $UID -ne 0 ] ; then
+    echo "You have to be root !"
 	if [ "$TERM" = "dumb" ] ; then
 		if [ -x "/usr/bin/gksudo" ] ; then
 			suer="/usr/bin/gksudo"
@@ -12,8 +13,7 @@ if [ $UID -ne 0 ] ; then
 	elif [ -x "/usr/bin/sudo" ] ; then
 		suer="/usr/bin/sudo"
 	else
-		echo "You have to be root !"
-        exit -1
+        suer="/bin/su"
 	fi
 	$suer "$0"
 	exit 0
